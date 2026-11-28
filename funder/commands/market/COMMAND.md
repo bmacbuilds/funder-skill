@@ -98,7 +98,7 @@ Market size (USD a year), top-down TAM, bottom-up SAM, SOM 2.5% of SAM in 3 year
 
 The 10% share, the $2,400 a year (8 walks a month at $25) and the 400,000
 launch-city homes are assumptions to replace with real data. The SOM's
-reason: owners leaving Rover over fees and Wag! over cancellations switch to
+reason: owners leaving Pawvia over fees and Strollo over cancellations (both made-up rivals) switch to
 flat $25 walks with a backup walker, 10,000 of the 400,000 homes by year 3.
 
 ## What it never does

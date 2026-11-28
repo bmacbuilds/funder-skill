@@ -55,7 +55,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-UA = "funder/1.0 (+https://github.com/bmacbuilds/funder-skill)"
+UA = "funder/1.1 (+https://github.com/bmacbuilds/funder-skill)"
 SEARCH = "https://itunes.apple.com/search?%s"
 LOOKUP = "https://itunes.apple.com/lookup?id=%s&country=%s"
 RSS = "https://itunes.apple.com/%s/rss/customerreviews/page=%d/id=%s/sortby=mostrecent/json"

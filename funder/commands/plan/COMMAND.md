@@ -101,9 +101,9 @@ Computed from the model's assumptions, exactly, and shown in the plan:
 
 Leashly (fictional): "A dog-walking app with flat prices and a backup walker
 on every walk", raising a $1.5M seed on a post-money SAFE to launch in 3
-cities. `plan.py build` reads the reel's competitor numbers (Rover 4.9 stars
+cities. `plan.py build` reads the reel's competitor numbers (made-up rivals: Pawvia 4.9 stars
 and 515,771 ratings, 106 of 341 recent 1 and 2 star reviews mention fees;
-Wag! 4.8 stars and 67,447 ratings, 81 of 324 mention cancellations), the
+Strollo 4.8 stars and 67,447 ratings, 81 of 324 mention cancellations), the
 market (71M US homes with a dog, $158B US pet spend in 2025, a top-down
 TAM of $8.5B, SAM $228M, SOM $22.8M) and the model:
 

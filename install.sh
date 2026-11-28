@@ -14,7 +14,7 @@ set -euo pipefail
 
 NAME="funder"
 FALLBACK="bmac-funder"
-RELEASE_URL="${FUNDER_RELEASE_URL:-https://github.com/bmacbuilds/funder-skill/archive/refs/tags/v1.0.0.tar.gz}"
+RELEASE_URL="${FUNDER_RELEASE_URL:-https://github.com/bmacbuilds/funder-skill/archive/refs/tags/v1.1.0.tar.gz}"
 MARKER=".funder-install"
 COMMANDS="scout investors plan deck closer market model coach terms dataroom updates"   # written by scripts/sync.py from skill.json
 FROM="" UPDATE=0 REPLACE=0 ASSUME_YES=0

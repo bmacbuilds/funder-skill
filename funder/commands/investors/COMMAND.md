@@ -90,12 +90,16 @@ ranked.
 ## Steps
 
 1. Make sure `seed/config.json` has the startup's stage, sector, geography
-   and raise (from `/funder-plan`), and a real `sec_user_agent`.
+   and raise (from `/funder-plan`), and a real `sec_user_agent`: ask them for
+   their own name and email for it before any search, never your own and
+   never a made-up one. Reach EDGAR only through `investors.py formd`.
 2. Run `investors.py formd --q "<a word in your space>" --since <18 months
    ago>`. Read who raised and how much: it is your comparable set, and the
    press coverage of those rounds names the investors who led them.
-3. Research on the open web, from those leads and from searches like "seed
-   investors <your space>", "<firm> portfolio <space>". For each investor,
+3. Research on the open web, with their yes and your AI app's own web tools,
+   from those leads and from searches like "seed investors <your space>",
+   "<firm> portfolio <space>". With no web tools, ask them to paste what they
+   have found instead. For each investor,
    write a row with the facts and the URLs you read. Write the
    `personal_line` from something real they did or wrote, with its source.
 4. Save the rows as CSV and run `investors.py import FILE.csv`. Fix every

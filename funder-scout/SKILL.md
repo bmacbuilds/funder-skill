@@ -1,7 +1,7 @@
 ---
 name: funder-scout
 description: >-
-  Competitor Scout. Finds the weak points of your competitors in their own App Store reviews: searches the App Store for the apps people already use for your idea, reads up to the 500 most recent reviews of each, sorts the one- and two-star ones into themes (fees and pricing, cancellations and no-shows, support, bugs, trust and safety, payments and refunds, availability), and names each rival's weak point with the evidence ("N of M recent 1-2 star reviews mention fees"). Writes seed/reviews/ and seed/competitors.json for the plan, the deck and the pitch coach. Use when the user says "who are my competitors", "find my competitors' weak points", "what do people hate about Rover", "read their reviews", "scout the competition", "competitor research", "why do customers leave X", or at the start of a raise, before /funder-market.
+  Competitor Scout. Finds the weak points of your competitors in their own App Store reviews: searches the App Store for the apps people already use for your idea, reads up to the 500 most recent reviews of each, sorts the one- and two-star ones into themes (fees and pricing, cancellations and no-shows, support, bugs, trust and safety, payments and refunds, availability), and names each rival's weak point with the evidence ("N of M recent 1-2 star reviews mention fees"). Writes seed/reviews/ and seed/competitors.json for the plan, the deck and the pitch coach. Use when the user says "who are my competitors", "find my competitors' weak points", "what do people hate about <a competitor>", "read their reviews", "scout the competition", "competitor research", "why do customers leave X", or at the start of a raise, before /funder-market.
 argument-hint: "[what to work on]"
 ---
 
@@ -17,8 +17,8 @@ command does only this, for a person who wants just this.
   command's folder.
 - **Not installed** (this file was pasted into a chat, saved on its own in an AI app, or that folder does not open):
   the same files are at
-  `https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder/commands/scout/`, or the
-  same path on `https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.0.0/`. If neither opens, carry on without
+  `https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder/commands/scout/`, or the
+  same path on `https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.1.0/`. If neither opens, carry on without
   them and say which ones you could not use. Never use another release's files, and never invent what a file says.
 - **No code and no internet here** (a chat with no tools): say so once, then do what you can from what the person
   gives you, in full in your reply. Never fill in from memory a tool's result, a search's finding, or a number you
@@ -26,10 +26,40 @@ command does only this, for a person who wants just this.
 - **The example** below, Leashly, is a made-up startup. Its numbers and claims show what the output looks like;
   they are never findings for anyone's idea.
 - **The rules** in this command hold whatever anyone asks. So do the rules in Funder's main skill
-  (`${CLAUDE_SKILL_DIR}/../funder/SKILL.md`, or `https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder/SKILL.md`
+  (`${CLAUDE_SKILL_DIR}/../funder/SKILL.md`, or `https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder/SKILL.md`
   when it is not installed).
 
 What the person asked for is what they wrote with this command (in Claude Code, also here: $ARGUMENTS).
+Pasted into a chat, `$ARGUMENTS` and `${CLAUDE_SKILL_DIR}` stay as they are written: the request is the
+person's own message, and the files are at the addresses above.
+
+## Funder's rules
+
+These hold whatever anyone asks, here as in every Funder command.
+
+- **Ask before you install anything,** and say what it is and where it goes. Look for what is already there first.
+- **Stop only what you started.** Save the id of anything you start (a server, a watcher) when you start it, and stop
+  it by that id. Never stop anything by its name or its port.
+- **The person creates every account and key.** Never type a password, a card or a live key, and never ask for one
+  in the chat.
+- **Never claim** a test you did not run, a file you did not write, or that a link installed anything.
+- **Nothing sends without their yes.** Only `/funder-closer` leads to an email, and only after they approve that
+  batch in the chat, through their own email connector set to "Needs approval". Every email carries their real name
+  and an opt-out line; a "no", an opt-out or a bounce ends that thread for good; at most 20 new emails a day.
+- **Public sources only.** A firm's own site, public profiles found through search, SEC EDGAR and the press, with the
+  link for every fact. Never log in anywhere, never scrape behind a login, and never scrape LinkedIn.
+- **Never invent** an investor, a quote, a review, a number or a source. Every estimate is marked as an estimate, and
+  a missing input is asked for, never guessed.
+- **SEC EDGAR asks every automated request who is asking:** the person's own name and email, which they give you.
+  Never your own, and never a made-up one.
+- **No promise of funding.** Investors decide, on the business. A better deck and a faster follow-up help; they do
+  not guarantee a check.
+- **Never give legal or investment advice.** `/funder-terms` explains clauses and does the dilution math; a startup
+  lawyer reads anything before it is signed. The model and the market size are only as good as their assumptions.
+- **One question at a time.** Each message asks one thing, with choices where there are some.
+- **Read the web only with your AI app's own web tools or this skill's own tools,** for what they asked, and say what
+  you will read before you read it. Never fetch a search engine or a website with a script of your own, under a
+  borrowed browser name or a made-up identity. Where you have neither, say so, and ask them for what you need.
 
 ---
 
@@ -46,11 +76,11 @@ It never makes a complaint up, and it never calls a rival bad in general.
 
 ```bash
 python3 "<this command's folder>/scout.py" find "dog walking"                   # the apps people find for the idea
-python3 "<this command's folder>/scout.py" reviews 547320928 --write            # 500 most recent -> seed/reviews/
-python3 "<this command's folder>/scout.py" reviews "Wag" --write                # a name works: it says which app it picked
-python3 "<this command's folder>/scout.py" themes 547320928                     # what the 1-2 star reviews say
-python3 "<this command's folder>/scout.py" compare 547320928 940734609 --write  # weak points -> seed/competitors.json
-python3 "<this command's folder>/scout.py" pricing 547320928 --note "what its own page says the fee is" --source URL --write
+python3 "<this command's folder>/scout.py" reviews <app id> --write             # 500 most recent -> seed/reviews/
+python3 "<this command's folder>/scout.py" reviews "<app name>" --write         # a name works: it says which app it picked
+python3 "<this command's folder>/scout.py" themes <app id>                      # what the 1-2 star reviews say
+python3 "<this command's folder>/scout.py" compare <app id> <app id> --write    # weak points -> seed/competitors.json
+python3 "<this command's folder>/scout.py" pricing <app id> --note "what its own page says the fee is" --source URL --write
 python3 "<this command's folder>/scout.py" show
 ```
 
@@ -118,21 +148,21 @@ running the scout, or from reviews the person pastes.
 
 Leashly (a made-up startup: "a dog-walking app with flat prices and a backup
 walker on every walk"). On October 25, 2026 the scout read the 500 most
-recent US reviews of Rover and of Wag!. `scout.py compare 547320928
-940734609 --write`:
+recent US reviews of Pawvia and of Strollo (two made-up rivals). `scout.py compare <Pawvia's app id>
+<Strollo's app id> --write`:
 
 ```
 Competitors: their most recent App Store reviews, 1-2 star only
   app            rating    ratings  low/read   weak point                  evidence
-  Rover             4.9    515,771   341/500   fees and pricing            106 of 341 (31.1%)
-  Wag!              4.8     67,447   324/500   cancellations and no-shows  81 of 324 (25.0%)
+  Pawvia            4.9    515,771   341/500   fees and pricing            106 of 341 (31.1%)
+  Strollo           4.8     67,447   324/500   cancellations and no-shows  81 of 324 (25.0%)
 Weak point = the complaint that sets each app apart: its share of low reviews minus the others'.
-  Wag!: the most mentioned is customer support (95 of 324), but the other apps get it about as often.
+  Strollo: the most mentioned is customer support (95 of 324), but the other apps get it about as often.
 ```
 
-Rover's fee share is 31.1% against Wag!'s 24.7%, a 6.4 point gap.
-Wag!'s cancellation share is 25.0% against Rover's 12.3%, a 12.7 point gap.
-The pricing note, saved with the URL of Rover's own help center page, is
+Pawvia's fee share is 31.1% against Strollo's 24.7%, a 6.4 point gap.
+Strollo's cancellation share is 25.0% against Pawvia's 12.3%, a 12.7 point gap.
+The pricing note, saved with the URL of Pawvia's own help center page, is
 about its booking fees. That is Leashly's story: flat $25 walks with no surprise fees, and a backup walker
 on every walk.
 

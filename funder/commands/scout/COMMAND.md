@@ -7,7 +7,7 @@ description: >-
   two-star ones into themes (fees and pricing, cancellations and no-shows, support, bugs, trust and safety, payments
   and refunds, availability), and names each rival's weak point with the evidence ("N of M recent 1-2 star reviews mention
   fees"). Writes seed/reviews/ and seed/competitors.json for the plan, the deck and the pitch coach. Use when
-  the user says "who are my competitors", "find my competitors' weak points", "what do people hate about Rover", "read
+  the user says "who are my competitors", "find my competitors' weak points", "what do people hate about <a competitor>", "read
   their reviews", "scout the competition", "competitor research", "why do customers leave X", or at the start of a
   raise, before /funder-market.
 ---
@@ -25,11 +25,11 @@ It never makes a complaint up, and it never calls a rival bad in general.
 
 ```bash
 python3 "<this command's folder>/scout.py" find "dog walking"                   # the apps people find for the idea
-python3 "<this command's folder>/scout.py" reviews 547320928 --write            # 500 most recent -> seed/reviews/
-python3 "<this command's folder>/scout.py" reviews "Wag" --write                # a name works: it says which app it picked
-python3 "<this command's folder>/scout.py" themes 547320928                     # what the 1-2 star reviews say
-python3 "<this command's folder>/scout.py" compare 547320928 940734609 --write  # weak points -> seed/competitors.json
-python3 "<this command's folder>/scout.py" pricing 547320928 --note "what its own page says the fee is" --source URL --write
+python3 "<this command's folder>/scout.py" reviews <app id> --write             # 500 most recent -> seed/reviews/
+python3 "<this command's folder>/scout.py" reviews "<app name>" --write         # a name works: it says which app it picked
+python3 "<this command's folder>/scout.py" themes <app id>                      # what the 1-2 star reviews say
+python3 "<this command's folder>/scout.py" compare <app id> <app id> --write    # weak points -> seed/competitors.json
+python3 "<this command's folder>/scout.py" pricing <app id> --note "what its own page says the fee is" --source URL --write
 python3 "<this command's folder>/scout.py" show
 ```
 
@@ -97,21 +97,21 @@ running the scout, or from reviews the person pastes.
 
 Leashly (a made-up startup: "a dog-walking app with flat prices and a backup
 walker on every walk"). On October 25, 2026 the scout read the 500 most
-recent US reviews of Rover and of Wag!. `scout.py compare 547320928
-940734609 --write`:
+recent US reviews of Pawvia and of Strollo (two made-up rivals). `scout.py compare <Pawvia's app id>
+<Strollo's app id> --write`:
 
 ```
 Competitors: their most recent App Store reviews, 1-2 star only
   app            rating    ratings  low/read   weak point                  evidence
-  Rover             4.9    515,771   341/500   fees and pricing            106 of 341 (31.1%)
-  Wag!              4.8     67,447   324/500   cancellations and no-shows  81 of 324 (25.0%)
+  Pawvia            4.9    515,771   341/500   fees and pricing            106 of 341 (31.1%)
+  Strollo           4.8     67,447   324/500   cancellations and no-shows  81 of 324 (25.0%)
 Weak point = the complaint that sets each app apart: its share of low reviews minus the others'.
-  Wag!: the most mentioned is customer support (95 of 324), but the other apps get it about as often.
+  Strollo: the most mentioned is customer support (95 of 324), but the other apps get it about as often.
 ```
 
-Rover's fee share is 31.1% against Wag!'s 24.7%, a 6.4 point gap.
-Wag!'s cancellation share is 25.0% against Rover's 12.3%, a 12.7 point gap.
-The pricing note, saved with the URL of Rover's own help center page, is
+Pawvia's fee share is 31.1% against Strollo's 24.7%, a 6.4 point gap.
+Strollo's cancellation share is 25.0% against Pawvia's 12.3%, a 12.7 point gap.
+The pricing note, saved with the URL of Pawvia's own help center page, is
 about its booking fees. That is Leashly's story: flat $25 walks with no surprise fees, and a backup walker
 on every walk.
 

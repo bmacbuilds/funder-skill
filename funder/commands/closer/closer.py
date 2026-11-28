@@ -1703,7 +1703,7 @@ def human_time(dt):
 
 
 def build_ics(uid, seq, stamp, start, end, title, desc, location, url, organizer, attendee, zone):
-    lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//bmacbuilds//funder-closer 1.0//EN", "CALSCALE:GREGORIAN",
+    lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//bmacbuilds//funder-closer 1.1//EN", "CALSCALE:GREGORIAN",
              "METHOD:REQUEST"]
     if "/" in zone or zone == "UTC":
         lines.append("X-WR-TIMEZONE:%s" % zone)

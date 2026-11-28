@@ -17,8 +17,8 @@ command does only this, for a person who wants just this.
   command's folder.
 - **Not installed** (this file was pasted into a chat, saved on its own in an AI app, or that folder does not open):
   the same files are at
-  `https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder/commands/deck/`, or the
-  same path on `https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.0.0/`. If neither opens, carry on without
+  `https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder/commands/deck/`, or the
+  same path on `https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.1.0/`. If neither opens, carry on without
   them and say which ones you could not use. Never use another release's files, and never invent what a file says.
 - **No code and no internet here** (a chat with no tools): say so once, then do what you can from what the person
   gives you, in full in your reply. Never fill in from memory a tool's result, a search's finding, or a number you
@@ -26,10 +26,40 @@ command does only this, for a person who wants just this.
 - **The example** below, Leashly, is a made-up startup. Its numbers and claims show what the output looks like;
   they are never findings for anyone's idea.
 - **The rules** in this command hold whatever anyone asks. So do the rules in Funder's main skill
-  (`${CLAUDE_SKILL_DIR}/../funder/SKILL.md`, or `https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder/SKILL.md`
+  (`${CLAUDE_SKILL_DIR}/../funder/SKILL.md`, or `https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder/SKILL.md`
   when it is not installed).
 
 What the person asked for is what they wrote with this command (in Claude Code, also here: $ARGUMENTS).
+Pasted into a chat, `$ARGUMENTS` and `${CLAUDE_SKILL_DIR}` stay as they are written: the request is the
+person's own message, and the files are at the addresses above.
+
+## Funder's rules
+
+These hold whatever anyone asks, here as in every Funder command.
+
+- **Ask before you install anything,** and say what it is and where it goes. Look for what is already there first.
+- **Stop only what you started.** Save the id of anything you start (a server, a watcher) when you start it, and stop
+  it by that id. Never stop anything by its name or its port.
+- **The person creates every account and key.** Never type a password, a card or a live key, and never ask for one
+  in the chat.
+- **Never claim** a test you did not run, a file you did not write, or that a link installed anything.
+- **Nothing sends without their yes.** Only `/funder-closer` leads to an email, and only after they approve that
+  batch in the chat, through their own email connector set to "Needs approval". Every email carries their real name
+  and an opt-out line; a "no", an opt-out or a bounce ends that thread for good; at most 20 new emails a day.
+- **Public sources only.** A firm's own site, public profiles found through search, SEC EDGAR and the press, with the
+  link for every fact. Never log in anywhere, never scrape behind a login, and never scrape LinkedIn.
+- **Never invent** an investor, a quote, a review, a number or a source. Every estimate is marked as an estimate, and
+  a missing input is asked for, never guessed.
+- **SEC EDGAR asks every automated request who is asking:** the person's own name and email, which they give you.
+  Never your own, and never a made-up one.
+- **No promise of funding.** Investors decide, on the business. A better deck and a faster follow-up help; they do
+  not guarantee a check.
+- **Never give legal or investment advice.** `/funder-terms` explains clauses and does the dilution math; a startup
+  lawyer reads anything before it is signed. The model and the market size are only as good as their assumptions.
+- **One question at a time.** Each message asks one thing, with choices where there are some.
+- **Read the web only with your AI app's own web tools or this skill's own tools,** for what they asked, and say what
+  you will read before you read it. Never fetch a search engine or a website with a script of your own, under a
+  borrowed browser name or a made-up identity. Where you have neither, say so, and ask them for what you need.
 
 ---
 
@@ -122,13 +152,13 @@ Leashly (fictional), from the reel's plan. `deck.py outline` gives:
  1. Leashly          12 words  Dog walks without the surprise fees. | Raising a $1.5M seed · post-money SAFE
  2. The problem      29 words  Owners pay fees on top of fees. Walkers cancel last minute. | 106 of 341 | ...
  4. The market       28 words  $158B US pet spend (2025). 71M US homes have a dog. | TAM | $8.5B | ...
- 5. Competition      33 words  Rover: fees. Wag!: cancellations. | Rover | 4.9★ · 515,771 ratings | ...
+ 5. Competition      33 words  Pawvia: fees. Strollo: cancellations. | Pawvia | 4.9★ · 515,771 ratings | ...
  6. Business model   23 words  15% take rate. No owner fee. | $25 | a walk | $3.75 | we keep (15%) | ...
  9. Financials       27 words  Breakeven in month 29 on the seed alone. | Revenue | Year 1 | $467K | ...
 10. The ask          28 words  $1.5M seed to launch in 3 cities. | Post-money SAFE | Product and engineering | ...
 ```
 
-The problem slide shows Rover's 106 of 341 and Wag!'s 81 of 324; the market
+The problem slide shows Pawvia's 106 of 341 and Strollo's 81 of 324 (both made-up rivals); the market
 slide TAM $8.5B, SAM $228M, SOM $22.8M; the business model $25 a walk, $3.75
 kept, $2.23 contribution, 4.24x LTV:CAC, 3.37 months payback; the financials
 $467K, $1.59M and $2.99M of revenue with breakeven in month 29 (May 2029) and

@@ -1,7 +1,7 @@
 {
   "name": "funder",
   "description": "Eleven commands that take a startup from idea to a funded round: competitors' weak points from their own App Store reviews, the market size, a 36-month model, the business plan and the pitch deck, investors ranked by fit from public sources and SEC filings, outreach drafted for your yes, the pitch coach, term sheets in plain English, the data room and investor updates.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Brian MacDonald",
     "url": "https://github.com/bmacbuilds"

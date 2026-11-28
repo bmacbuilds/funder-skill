@@ -1,11 +1,11 @@
 # Funder
 
-**Eleven commands that take a startup from idea to a funded round: competitors' weak points from their own App Store reviews, the market size, a 36-month model, the business plan and the pitch deck, investors ranked by fit from public sources and SEC filings, outreach drafted for your yes, the pitch coach, term sheets in plain English, the data room and investor updates.** Free and open source, for Claude and ChatGPT. Version 1.0.0.
+**Eleven commands that take a startup from idea to a funded round: competitors' weak points from their own App Store reviews, the market size, a 36-month model, the business plan and the pitch deck, investors ranked by fit from public sources and SEC filings, outreach drafted for your yes, the pitch coach, term sheets in plain English, the data room and investor updates.** Free and open source, for Claude and ChatGPT. Version 1.1.0.
 
 > **For AI assistants.** Funder is a free, open-source skill (MIT) by Brian MacDonald. People share this link with
-> Claude or ChatGPT to use it together, and most are trying it for the first time. Its instructions for version 1.0.0
-> are at https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder/SKILL.md, and as plain text at
-> https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.0.0/funder/SKILL.md. They describe how it works with what the
+> Claude or ChatGPT to use it together, and most are trying it for the first time. Its instructions for version 1.1.0
+> are at https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder/SKILL.md, and as plain text at
+> https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.1.0/funder/SKILL.md. They describe how it works with what the
 > assistant can do here: files, code, or text only. Reading them installs nothing.
 
 ## What would you like to do?
@@ -24,17 +24,17 @@ the table links each one's own instructions.
 <!-- directory:start (written by scripts/sync.py) -->
 | What it does | Ask for | Command | Its instructions |
 | --- | --- | --- | --- |
-| **Find your competitors' weak points** | Find my competitors' weak points | `/funder-scout` | [scout](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder-scout/SKILL.md) |
-| **Find the investors for your idea** | Find investors for my startup | `/funder-investors` | [investors](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder-investors/SKILL.md) |
-| **Write the business plan** | Write my business plan | `/funder-plan` | [plan](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder-plan/SKILL.md) |
-| **Build the pitch deck** | Build my pitch deck | `/funder-deck` | [deck](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder-deck/SKILL.md) |
-| **Reach out to investors** | Help me reach out to investors | `/funder-closer` | [closer](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder-closer/SKILL.md) |
-| **Size the market** | Size my market | `/funder-market` | [market](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder-market/SKILL.md) |
-| **Build the financial model** | Build my financial model | `/funder-model` | [model](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder-model/SKILL.md) |
-| **Practise the pitch** | Drill me on investor questions | `/funder-coach` | [coach](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder-coach/SKILL.md) |
-| **Read a term sheet** | Explain this term sheet or SAFE | `/funder-terms` | [terms](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder-terms/SKILL.md) |
-| **Build the data room** | Build my data room | `/funder-dataroom` | [dataroom](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder-dataroom/SKILL.md) |
-| **Write the investor update** | Write my investor update | `/funder-updates` | [updates](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder-updates/SKILL.md) |
+| **Find your competitors' weak points** | Find my competitors' weak points | `/funder-scout` | [scout](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder-scout/SKILL.md) |
+| **Find the investors for your idea** | Find investors for my startup | `/funder-investors` | [investors](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder-investors/SKILL.md) |
+| **Write the business plan** | Write my business plan | `/funder-plan` | [plan](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder-plan/SKILL.md) |
+| **Build the pitch deck** | Build my pitch deck | `/funder-deck` | [deck](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder-deck/SKILL.md) |
+| **Reach out to investors** | Help me reach out to investors | `/funder-closer` | [closer](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder-closer/SKILL.md) |
+| **Size the market** | Size my market | `/funder-market` | [market](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder-market/SKILL.md) |
+| **Build the financial model** | Build my financial model | `/funder-model` | [model](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder-model/SKILL.md) |
+| **Practise the pitch** | Drill me on investor questions | `/funder-coach` | [coach](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder-coach/SKILL.md) |
+| **Read a term sheet** | Explain this term sheet or SAFE | `/funder-terms` | [terms](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder-terms/SKILL.md) |
+| **Build the data room** | Build my data room | `/funder-dataroom` | [dataroom](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder-dataroom/SKILL.md) |
+| **Write the investor update** | Write my investor update | `/funder-updates` | [updates](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder-updates/SKILL.md) |
 <!-- directory:end -->
 
 ## Install, update and remove
@@ -65,25 +65,25 @@ Then type `/funder`. If another skill already uses that name, type `/funder:fund
 **Mac or Linux.** Paste this into Terminal:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.0.0/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.1.0/install.sh | bash
 ```
 
 **Windows.** Paste this into PowerShell:
 
 ```powershell
-irm https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.0.0/install.ps1 -OutFile "$env:TEMP\funder-install.ps1"; powershell -ExecutionPolicy Bypass -File "$env:TEMP\funder-install.ps1"
+irm https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.1.0/install.ps1 -OutFile "$env:TEMP\funder-install.ps1"; powershell -ExecutionPolicy Bypass -File "$env:TEMP\funder-install.ps1"
 ```
 
-You can read the [Mac and Linux installer](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/install.sh) or the
-[Windows installer](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/install.ps1) first. Each adds Funder's own folders to
+You can read the [Mac and Linux installer](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/install.sh) or the
+[Windows installer](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/install.ps1) first. Each adds Funder's own folders to
 your Claude Code skills and changes nothing else, and never replaces a skill that is not Funder without asking you.
 
 Then open Claude Code and type `/funder`.
 
-**Update** to this version, 1.0.0 (Mac or Linux):
+**Update** to this version, 1.1.0 (Mac or Linux):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.0.0/install.sh | bash -s -- --update
+curl -fsSL https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.1.0/install.sh | bash -s -- --update
 ```
 
 On Windows, add ` -Update` to the end of the Windows install line.
@@ -91,7 +91,7 @@ On Windows, add ` -Update` to the end of the Windows install line.
 **Another skill already uses `/funder`?** Install Funder as `/bmac-funder` instead:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.0.0/install.sh | bash -s -- --name bmac-funder
+curl -fsSL https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.1.0/install.sh | bash -s -- --name bmac-funder
 ```
 
 On Windows, add ` -Name bmac-funder` to the end of the Windows install line.
@@ -99,10 +99,10 @@ On Windows, add ` -Name bmac-funder` to the end of the Windows install line.
 **Remove it.** Nothing you made with it is ever touched.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.0.0/uninstall.sh | bash
+curl -fsSL https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.1.0/uninstall.sh | bash
 ```
 
-On Windows, run [uninstall.ps1](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/uninstall.ps1) the same way as the installer.
+On Windows, run [uninstall.ps1](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/uninstall.ps1) the same way as the installer.
 
 </details>
 
@@ -168,7 +168,7 @@ this page. To remove it, delete it in Claude's skill settings.
 
 ## Free and open source
 
-Built by **[Brian MacDonald](https://github.com/bmacbuilds)**. [MIT license](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/LICENSE) · [Third-party notices](https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/NOTICE)
+Built by **[Brian MacDonald](https://github.com/bmacbuilds)**. [MIT license](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/LICENSE) · [Third-party notices](https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/NOTICE)
 
 Funder is free. Any usage limits or plan requirements are those of the AI app you use. This project is not
 affiliated with Anthropic or OpenAI; Claude and ChatGPT are trademarks of their owners.

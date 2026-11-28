@@ -19,7 +19,7 @@ param(
 $ErrorActionPreference = "Stop"
 $Fallback = "bmac-funder"
 $ReleaseUrl = if ($env:FUNDER_RELEASE_URL) { $env:FUNDER_RELEASE_URL } else {
-  "https://github.com/bmacbuilds/funder-skill/archive/refs/tags/v1.0.0.zip" }
+  "https://github.com/bmacbuilds/funder-skill/archive/refs/tags/v1.1.0.zip" }
 $Marker = ".funder-install"
 $Commands = @("scout", "investors", "plan", "deck", "closer", "market", "model", "coach", "terms", "dataroom", "updates")   # written by scripts/sync.py from skill.json
 

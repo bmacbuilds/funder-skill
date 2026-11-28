@@ -226,6 +226,13 @@ def cap_table(holders, U, res, investor="New investors"):
     return rows
 
 
+def whole_counts(holders, U, res):
+    """The fully diluted share counts in whole shares, before and after the new money: the sums of the table's rows,
+    each rounded down on its own, so the printout and the saved file always give the same counts."""
+    after = sum(r[2] for r in cap_table(holders, U, res))
+    return after - floor_shares(res["new_shares"]), after
+
+
 def render_table(rows):
     before_total = sum(r[1] or 0 for r in rows)
     after_total = sum(r[2] for r in rows)
@@ -299,7 +306,7 @@ def round_lines(holders, U, safes, V, N, P, res):
     S = sum(h["shares"] for h in holders) + U
     lines = ["Priced round: %s of new money at %s pre-money (%s post-money)" % (money(N), money(V), money(V + N)),
              "  Price per share  %s  (%s / %s fully diluted pre-money shares)" % (price(res["pps"]), money(V),
-                                                                                 whole(floor_shares(res["fd_pre"]))),
+                                                                                 whole(whole_counts(holders, U, res)[0])),
              "  New shares       %s for the new investors (%s of the company after)"
              % (whole(floor_shares(res["new_shares"])), pct(res["new_shares"] / res["fd_post"]))]
     if P:
@@ -336,9 +343,9 @@ def round_lines(holders, U, safes, V, N, P, res):
 
 def round_json(holders, U, V, N, P, res):
     return {"pre_money": num(V, 2), "new_money": num(N, 2), "post_money": num(V + N, 2), "pool_target": num(P),
-            "price_per_share": num(res["pps"]), "fd_pre_money_shares": floor_shares(res["fd_pre"]),
+            "price_per_share": num(res["pps"]), "fd_pre_money_shares": whole_counts(holders, U, res)[0],
             "pool_topup_shares": floor_shares(res["pool_topup"]), "new_investor_shares": floor_shares(res["new_shares"]),
-            "fd_post_money_shares": floor_shares(res["fd_post"]),
+            "fd_post_money_shares": whole_counts(holders, U, res)[1],
             "effective_pre_money": num(V - res["pool_topup"] * res["pps"], 2),
             "safes": [{"name": s["name"], "investment": num(s["investment"], 2),
                        "cap": num(s["cap"], 2) if s["cap"] is not None else None, "discount": num(s["discount"]),

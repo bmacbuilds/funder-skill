@@ -17,8 +17,8 @@ command does only this, for a person who wants just this.
   command's folder.
 - **Not installed** (this file was pasted into a chat, saved on its own in an AI app, or that folder does not open):
   the same files are at
-  `https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder/commands/terms/`, or the
-  same path on `https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.0.0/`. If neither opens, carry on without
+  `https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder/commands/terms/`, or the
+  same path on `https://raw.githubusercontent.com/bmacbuilds/funder-skill/v1.1.0/`. If neither opens, carry on without
   them and say which ones you could not use. Never use another release's files, and never invent what a file says.
 - **No code and no internet here** (a chat with no tools): say so once, then do what you can from what the person
   gives you, in full in your reply. Never fill in from memory a tool's result, a search's finding, or a number you
@@ -26,10 +26,40 @@ command does only this, for a person who wants just this.
 - **The example** below, Leashly, is a made-up startup. Its numbers and claims show what the output looks like;
   they are never findings for anyone's idea.
 - **The rules** in this command hold whatever anyone asks. So do the rules in Funder's main skill
-  (`${CLAUDE_SKILL_DIR}/../funder/SKILL.md`, or `https://github.com/bmacbuilds/funder-skill/blob/v1.0.0/funder/SKILL.md`
+  (`${CLAUDE_SKILL_DIR}/../funder/SKILL.md`, or `https://github.com/bmacbuilds/funder-skill/blob/v1.1.0/funder/SKILL.md`
   when it is not installed).
 
 What the person asked for is what they wrote with this command (in Claude Code, also here: $ARGUMENTS).
+Pasted into a chat, `$ARGUMENTS` and `${CLAUDE_SKILL_DIR}` stay as they are written: the request is the
+person's own message, and the files are at the addresses above.
+
+## Funder's rules
+
+These hold whatever anyone asks, here as in every Funder command.
+
+- **Ask before you install anything,** and say what it is and where it goes. Look for what is already there first.
+- **Stop only what you started.** Save the id of anything you start (a server, a watcher) when you start it, and stop
+  it by that id. Never stop anything by its name or its port.
+- **The person creates every account and key.** Never type a password, a card or a live key, and never ask for one
+  in the chat.
+- **Never claim** a test you did not run, a file you did not write, or that a link installed anything.
+- **Nothing sends without their yes.** Only `/funder-closer` leads to an email, and only after they approve that
+  batch in the chat, through their own email connector set to "Needs approval". Every email carries their real name
+  and an opt-out line; a "no", an opt-out or a bounce ends that thread for good; at most 20 new emails a day.
+- **Public sources only.** A firm's own site, public profiles found through search, SEC EDGAR and the press, with the
+  link for every fact. Never log in anywhere, never scrape behind a login, and never scrape LinkedIn.
+- **Never invent** an investor, a quote, a review, a number or a source. Every estimate is marked as an estimate, and
+  a missing input is asked for, never guessed.
+- **SEC EDGAR asks every automated request who is asking:** the person's own name and email, which they give you.
+  Never your own, and never a made-up one.
+- **No promise of funding.** Investors decide, on the business. A better deck and a faster follow-up help; they do
+  not guarantee a check.
+- **Never give legal or investment advice.** `/funder-terms` explains clauses and does the dilution math; a startup
+  lawyer reads anything before it is signed. The model and the market size are only as good as their assumptions.
+- **One question at a time.** Each message asks one thing, with choices where there are some.
+- **Read the web only with your AI app's own web tools or this skill's own tools,** for what they asked, and say what
+  you will read before you read it. Never fetch a search engine or a website with a script of your own, under a
+  borrowed browser name or a made-up identity. Where you have neither, say so, and ask them for what you need.
 
 ---
 
@@ -67,7 +97,7 @@ Amounts: `500k`, `1.5m`, `$1,500,000`. Percentages: `20` or `20%`. A SAFE:
 | file | what |
 | --- | --- |
 | a term sheet or SAFE as text | for `scan`: paste the PDF's text into a .txt file first |
-| `--cap-table FILE.json` | optional: `{"holders": [{"name", "shares"}], "pool_unissued", "safes": [{"name", "investment", "cap", "discount"}]}`. `safe` and `round` both count the SAFEs it lists (a SAFE also given on the command line is refused), and `safe` shows each holder before and after they convert |
+| `--cap-table FILE.json` | optional: `{"holders": [{"name", "shares"}], "pool_unissued", "safes": [{"name", "investment", "cap", "discount"}]}`. Options already granted, exercised or not, are a line in `holders` (such as `{"name": "Options granted", "shares": 300000}`); `pool_unissued` is only the part of the pool not yet granted. `safe` and `round` both count the SAFEs it lists (a SAFE also given on the command line is refused), and `safe` shows each holder before and after they convert |
 | `seed/terms/safe.json`, `round.json` | with `--write`: every input and every number shown |
 | `seed/terms/scan-<name>.md` | with `--write`: the flags, the excerpts and the questions |
 
@@ -80,14 +110,23 @@ Amounts: `500k`, `1.5m`, `$1,500,000`. Percentages: `20` or `20%`. A SAFE:
   round) and the discount price (the round price x (1 - discount)). With
   post-money caps, every extra SAFE dilutes the founders, not the other SAFE
   holders.
+- **A pre-money SAFE, or one that does not say.** All of the SAFE math here is
+  for post-money SAFEs. A pre-money SAFE's cap leaves out the SAFE money and the
+  other SAFEs, so it owns less at its cap than the post-money math shows, and
+  each new SAFE dilutes the earlier ones too. If the SAFE says pre-money, say
+  so and do not run `safe` on it as if it were post-money. If it does not say,
+  ask them to look: a post-money SAFE calls its cap the "Post-Money Valuation
+  Cap", and its definition of "Company Capitalization" counts the SAFEs.
 - **Priced round.** Price per share = pre-money / fully diluted pre-money
   shares, where that count already includes the converted SAFEs and the new
   pool. The pool target is the unissued pool as a share of the post-money
   count. That is the option-pool shuffle: the pool is carved out before the
   money comes in, so only existing holders pay for it. The tool prints the
   effective pre-money (pre-money minus the pool top-up at the round price).
-- The math is exact (fractions), shares are rounded down to whole shares at
-  the end. Real documents round the price first; expect a few shares of drift.
+- The math is exact (fractions), and each holder's shares are rounded down to
+  whole shares at the end. The totals are those whole shares added up, in the
+  printout and in the saved file alike. Real documents round the price first;
+  expect a few shares of drift from them.
 - **The scanner** splits the text into clauses and flags, by rules: a
   liquidation preference over 1x, participating preferred (capped or not),
   full-ratchet or narrow-based anti-dilution, redemption rights, cumulative
@@ -110,13 +149,19 @@ Amounts: `500k`, `1.5m`, `$1,500,000`. Percentages: `20` or `20%`. A SAFE:
    sign; say what is standard and what is not.
 3. Run the math: `safe` for a SAFE (with `--other` for the rest of the round),
    `round` for a priced round. Show the founders' percentage before and after
-   and the effective pre-money. Try the counter-offer too (a smaller pool, a
-   higher cap) so the user sees what each ask is worth.
+   and the effective pre-money. Try the counter-offer too, so the user sees
+   what each ask is worth: the pool 5 points smaller (10% for a 15% ask) and
+   sized to their hiring plan for the next 18 months, and the cap or pre-money
+   10% and 20% higher. These are sizes to compare, not what to ask for.
 4. Write the questions into a short list for the lawyer. Recommend a startup
    lawyer before signing, every time.
 5. Hand off: /funder-dataroom for the confirmatory diligence that follows a
    signed term sheet (`share-list --stage after`), and /funder-updates to keep
-   the other investors posted.
+   the other investors posted. A SAFE on its own usually has no confirmatory
+   diligence: once it is signed, it goes in the data room's `08 Cap table`
+   folder with the updated cap table (`dataroom.py check --stage after` shows
+   what that folder needs), and an investor who asks for documents before
+   signing gets `share-list --stage before`.
 
 ## Example: the reel
 

@@ -47,7 +47,7 @@ Amounts: `500k`, `1.5m`, `$1,500,000`. Percentages: `20` or `20%`. A SAFE:
 | file | what |
 | --- | --- |
 | a term sheet or SAFE as text | for `scan`: paste the PDF's text into a .txt file first |
-| `--cap-table FILE.json` | optional: `{"holders": [{"name", "shares"}], "pool_unissued", "safes": [{"name", "investment", "cap", "discount"}]}`. `safe` and `round` both count the SAFEs it lists (a SAFE also given on the command line is refused), and `safe` shows each holder before and after they convert |
+| `--cap-table FILE.json` | optional: `{"holders": [{"name", "shares"}], "pool_unissued", "safes": [{"name", "investment", "cap", "discount"}]}`. Options already granted, exercised or not, are a line in `holders` (such as `{"name": "Options granted", "shares": 300000}`); `pool_unissued` is only the part of the pool not yet granted. `safe` and `round` both count the SAFEs it lists (a SAFE also given on the command line is refused), and `safe` shows each holder before and after they convert |
 | `seed/terms/safe.json`, `round.json` | with `--write`: every input and every number shown |
 | `seed/terms/scan-<name>.md` | with `--write`: the flags, the excerpts and the questions |
 
@@ -60,14 +60,23 @@ Amounts: `500k`, `1.5m`, `$1,500,000`. Percentages: `20` or `20%`. A SAFE:
   round) and the discount price (the round price x (1 - discount)). With
   post-money caps, every extra SAFE dilutes the founders, not the other SAFE
   holders.
+- **A pre-money SAFE, or one that does not say.** All of the SAFE math here is
+  for post-money SAFEs. A pre-money SAFE's cap leaves out the SAFE money and the
+  other SAFEs, so it owns less at its cap than the post-money math shows, and
+  each new SAFE dilutes the earlier ones too. If the SAFE says pre-money, say
+  so and do not run `safe` on it as if it were post-money. If it does not say,
+  ask them to look: a post-money SAFE calls its cap the "Post-Money Valuation
+  Cap", and its definition of "Company Capitalization" counts the SAFEs.
 - **Priced round.** Price per share = pre-money / fully diluted pre-money
   shares, where that count already includes the converted SAFEs and the new
   pool. The pool target is the unissued pool as a share of the post-money
   count. That is the option-pool shuffle: the pool is carved out before the
   money comes in, so only existing holders pay for it. The tool prints the
   effective pre-money (pre-money minus the pool top-up at the round price).
-- The math is exact (fractions), shares are rounded down to whole shares at
-  the end. Real documents round the price first; expect a few shares of drift.
+- The math is exact (fractions), and each holder's shares are rounded down to
+  whole shares at the end. The totals are those whole shares added up, in the
+  printout and in the saved file alike. Real documents round the price first;
+  expect a few shares of drift from them.
 - **The scanner** splits the text into clauses and flags, by rules: a
   liquidation preference over 1x, participating preferred (capped or not),
   full-ratchet or narrow-based anti-dilution, redemption rights, cumulative
@@ -90,13 +99,19 @@ Amounts: `500k`, `1.5m`, `$1,500,000`. Percentages: `20` or `20%`. A SAFE:
    sign; say what is standard and what is not.
 3. Run the math: `safe` for a SAFE (with `--other` for the rest of the round),
    `round` for a priced round. Show the founders' percentage before and after
-   and the effective pre-money. Try the counter-offer too (a smaller pool, a
-   higher cap) so the user sees what each ask is worth.
+   and the effective pre-money. Try the counter-offer too, so the user sees
+   what each ask is worth: the pool 5 points smaller (10% for a 15% ask) and
+   sized to their hiring plan for the next 18 months, and the cap or pre-money
+   10% and 20% higher. These are sizes to compare, not what to ask for.
 4. Write the questions into a short list for the lawyer. Recommend a startup
    lawyer before signing, every time.
 5. Hand off: /funder-dataroom for the confirmatory diligence that follows a
    signed term sheet (`share-list --stage after`), and /funder-updates to keep
-   the other investors posted.
+   the other investors posted. A SAFE on its own usually has no confirmatory
+   diligence: once it is signed, it goes in the data room's `08 Cap table`
+   folder with the updated cap table (`dataroom.py check --stage after` shows
+   what that folder needs), and an investor who asks for documents before
+   signing gets `share-list --stage before`.
 
 ## Example: the reel
 

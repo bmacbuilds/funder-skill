@@ -97,7 +97,7 @@ computer's time zone never moves it.
 Leashly (fictional) after the Northlight call on Thursday, Nov 5. The room
 has the one-pager, the business plan, the 10-slide deck, the model, the use
 of funds for the $1.5M seed, the market sizing (APPA's $158B and 71M dog
-homes) and the Rover / Wag! competitor analysis. `check --stage before`
+homes) and the competitor analysis of Pawvia and Strollo (both made up). `check --stage before`
 shows 9 of 12 items present, the traction metrics from June stale (147 days,
 limit 45), and the roadmap and testimonials missing. A stray `customer list
 export.csv` is flagged DO NOT SHARE. Fix those three, run `index`, and the
